@@ -1,0 +1,176 @@
+
+body{
+    color: black;
+    background-image: url(background.jpg);
+    background-position: cover;
+    background-repeat: no-repeat;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+}
+#container_forcards{
+    position: relative ;
+    width: 1881px;
+    height: 700px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "kerdes_kartya raise huzopakli"
+                        "kartya1 kartya2 kartya3";
+}
+
+
+
+#kerdes_kartya{
+    width: 60%;
+    height: 75%;
+    margin-left: 150px;
+    margin-top: 50px;
+    background-color: blue;
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    font-size: 15px ;
+    text-align: center;
+    grid-area: kerdes_kartya;
+}
+#kerdes_kartya h1{
+    margin-top: 125px;
+
+}
+
+
+#raise{
+    background-color: rgb(158, 8, 8);
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    margin-top: 50px;
+    margin-left : 100px;
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    
+}
+#raise h1{
+    font-size: 72px;
+    margin-top: 80px;
+}
+#raise:hover{
+    background-image: linear-gradient(rgb(158, 8, 8), rgb(255, 108, 108), white);
+}
+#huzopakli{
+    width: 35%;
+    height: 75%;
+    margin-top: 50px;
+    margin-right: 230px;
+    background-color:  rgb(158, 8, 8);
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    grid-area: huzopakli;
+    display: flex;
+    gap: 0px;
+}
+#huzopakli button{
+    text-align: center;
+    margin-top: 125px;
+}
+
+#kartya1{
+    position: absolute;
+    width: 30%;
+    height: 90%;
+    margin-left: 250px;
+    background-color: white;
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    grid-area: kartya1;
+    animation: kartyamozog, 5s, infinite;
+}
+
+#kartya2{
+    width: 30%;
+    height: 90%;
+    margin-left: 150px;
+    background-color: white;
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    grid-area: kartya2;
+}
+#kartya3{
+    width: 30%;
+    height: 90%;
+    margin-right: 280px;
+    background-color: white;
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    grid-area: kartya3;
+}
+#kartya1 p {
+    margin-top: 120px;
+    text-align: center;
+}
+#kartya2 p {
+    margin-top: 120px;
+    text-align: center;
+}
+#kartya3     p {
+    margin-top: 120px;
+    text-align: center;
+}
+
+#kartya1:hover{
+    background-color: rgb(143, 202, 221);
+}
+
+
+#kartya2:hover{
+    background-color: rgb(143, 202, 221);
+}
+
+
+#kartya3:hover{
+    background-color: rgb(143, 202, 221);
+}
+
+@keyframes kartyamozog {
+    0% {left: 0px; top: 0px;}
+    100% {left: 1780px; top: 0px;}
+}
+#pontszam p{
+    background-color: rgb(158, 8, 8) ;
+    width: 20%;
+    margin-top: 10vh;
+}
+
+#kerd_huz{
+    width: 50%;
+    height: 50%;
+    margin-bottom: 100px;
+    background-color:  rgb(158, 8, 8);
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+}
+
+#val_huz{
+    width: 50%;
+    height: 50%;
+    margin-bottom: 100px;
+    background-color:  rgb(158, 8, 8);
+    border: 5px solid black;
+    outline-style: groove;
+    outline-color: black;
+    outline-width: 7px;
+    font-family: 'Berlin Sans FB Demi', sans-serif;
+}

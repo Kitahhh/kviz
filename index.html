@@ -1,11 +1,112 @@
 <!DOCTYPE html>
-<html lang="hu">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kvíz gém</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.cdnfonts.com/css/berlin-sans-fb-demi" rel="stylesheet">
+    <title>Quiz with Cards</title>
 </head>
 <body>
+    
+        
+
+    <div id="container_forcards">
+        <div id="kerdes_kartya"><h1>1. kérdés: hablatyhablatyhablaty</h1></div>
+        <div id="huzopakli">
+            <button id= "kerd_huz" type="button" onclick="ker_reset()">
+                Új kérdés húzása
+            </button>
+
+            <button id= "val_huz" type="button" onclick="val_reset()">
+                Új válasz húzása
+            </button>
+        </div>
+        <div id="raise"> <h1>RAISE</h1></div>
+        <div id="kartya1" onclick="eredmeny(1)"><p></p></div>
+        <div id="kartya2" onclick="eredmeny(2)"><p></p></div>
+        <div id="kartya3" onclick="eredmeny(3)"><p></p></div>
+        <div id="pontszam"><p>PONTSZÁM: </p></div>
+    </div>
+
+    
+
+    <script>
+        let kerdesek = [];
+        kerdesek[0] = "Mi az: ha feldobom, fehér, ha leesik, tízezres?"
+        kerdesek[1] = "Mi van, ha sok buzi sétál az utcán?"
+        kerdesek[2] = "Mi a közös a terhes nőben és egy átlagos diákban?"
+        kerdesek[3] = "Mi lesz Superman új neve, amikor papnak áll??"
+        kerdesek[4] = "Fenn is van, lenn is van"+
+                        "kinn is van, benn is van,"+
+                        "néma is, zenél is,"+
+                        "lágy is és kemény is,"+
+                        "fehér is, szürke is,"
+                        "lomha is, fürge is."
+        kerdesek[5] = "Hogy hívják a hülye pincért?"
+        kerdesek[6] = "Kifele megy befele áll, befele jön kifele áll, lefele jön felfele áll, felfele megy lefele áll."
+        kerdesek[7] = "Hogy hívják az eltűnt kínait?"
+        kerdesek[8] = "Mi a kannibálok kedvenc gyorskajája?"
+        kerdesek[9] = "Ki látható a képen?"
+
+        let valaszok = [];
+        valaszok[0] = "Csoda"
+        valaszok[1] = "Melegfront"
+        valaszok[2] = "A 9 hónapig tartó, rendszeres reggeli rosszullét"
+        valaszok[3] = "áMEN"
+        valaszok[4] = "víz"
+        valaszok[5] = "Éttermi fogyatékos"
+        valaszok[6] = "macska farka"
+        valaszok[7] = "Nin Csen!"
+        valaszok[8] = "A pizzafutár"
+        valaszok[9] = "Vágó Úr"
+        let mostanikerdes = 0
+        let mostanivalasz1 = 0
+        let mostanivalasz2 = 0
+        let mostanivalasz3 = 0
+        let pontsz = 0
+        function ker_reset(){
+            let i = Math.floor(Math.random() * kerdesek.length)
+
+        for (let index = 0; index < kerdesek.length; index++) {
+            if (kerdesek[index] == kerdesek[i] ) {
+                document.getElementById("kerdes_kartya").innerHTML = "<h1>" + kerdesek[i] + "</h1>"
+                mostanikerdes = index
+            }
+            if(i == 9) {
+                document.getElementById("kerdes_kartya").style.backgroundImage="url('Vágóúr.png')"
+                document.getElementById("kerdes_kartya").style.backgroundSize = "cover"
+            }
+        }     
+        }
+        ker_reset()
+
+        function val_reset(){
+            
+        let valasz1 = Math.floor(Math.random() * valaszok.length)
+        let valasz2 = Math.floor(Math.random() * valaszok.length)
+        let valasz3 = Math.floor(Math.random() * valaszok.length)
+        document.getElementById("kartya1").innerHTML = "<p>" + valaszok[valasz1] + "</p>"
+        document.getElementById("kartya2").innerHTML = "<p>" + valaszok[valasz2] + "</p>"
+        document.getElementById("kartya3").innerHTML = "<p>" + valaszok[valasz3] + "</p>"
+        mostanivalasz1 = valasz1;
+        mostanivalasz2 = valasz2;
+        mostanivalasz3 = valasz3;
+
+        }
+        val_reset()
+
+        function eredmeny(melyik){
+            if (melyik == 1 && mostanikerdes == mostanivalasz1) pontsz += 15;
+            else if (melyik == 2 && mostanikerdes == mostanivalasz2) pontsz += 15;
+            else if (melyik == 3 && mostanikerdes == mostanivalasz3) pontsz += 15;
+            else pontsz -= 10
+            document.getElementById("pontszam").innerHTML = "<p> PONTSZÁM: " + pontsz 
+            val_reset()
+            ker_reset()
+        }
+        
+    </script>
     
 </body>
 </html>
