@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -65,45 +65,95 @@
         let mostanivalasz2 = 0
         let mostanivalasz3 = 0
         let pontsz = 0
-        function ker_reset(){
-            let i = Math.floor(Math.random() * kerdesek.length)
 
-        for (let index = 0; index < kerdesek.length; index++) {
-            if (kerdesek[index] == kerdesek[i] ) {
-                document.getElementById("kerdes_kartya").innerHTML = "<h1>" + kerdesek[i] + "</h1>"
-                mostanikerdes = index
-            }
-            if(i == 9) {
-                document.getElementById("kerdes_kartya").style.backgroundImage="url('Vágóúr.png')"
-                document.getElementById("kerdes_kartya").style.backgroundSize = "cover"
-            }
-        }     
-        }
-        ker_reset()
 
         function val_reset(){
             
+            if (pontsz > 25) {
+                let valasz1 = Math.floor(Math.random() * valaszok.length)
+                let valasz2 = Math.floor(Math.random() * valaszok.length)
+                let valasz3 = Math.floor(Math.random() * valaszok.length)
+
+                while (valasz2 === valasz1 || valasz3 === valasz1 || valasz3 === valasz2) {
+                valasz2 = Math.floor(Math.random() * valaszok.length);
+                valasz3 = Math.floor(Math.random() * valaszok.length);
+                }
+
+                document.getElementById("kartya1").innerHTML = "<p>" + valaszok[valasz1] + "</p>"
+                document.getElementById("kartya2").innerHTML = "<p>" + valaszok[valasz2] + "</p>"
+                document.getElementById("kartya3").innerHTML = "<p>" + valaszok[valasz3] + "</p>"
+                mostanivalasz1 = valasz1;
+                mostanivalasz2 = valasz2;
+                mostanivalasz3 = valasz3;
+
+                pontsz -= 25
+
+                document.getElementById("pontszam").innerHTML = "<p> PONTSZÁM: " + pontsz 
+            }
+        }
+ 
+
+        function ker_reset() {
+            if (pontsz > 10) {
+                let i = Math.floor(Math.random() * kerdesek.length);
+                let kartya = document.getElementById("kerdes_kartya");
+
+                kartya.innerHTML = "<h1>" + kerdesek[i] + "</h1>";
+                mostanikerdes = i;
+
+                if (i == 9) {
+                kartya.style.backgroundImage = "url('Vágóúr.png')";
+                kartya.style.backgroundSize = "cover";
+            } else {
+            kartya.style.backgroundImage = "none";
+            }
+
+            pontsz -= 10
+
+            document.getElementById("pontszam").innerHTML = "<p> PONTSZÁM: " + pontsz 
+        }
+        }
+
+
+        function reset() {
+        let i = Math.floor(Math.random() * kerdesek.length);
+        let kartya = document.getElementById("kerdes_kartya");
+
+        kartya.innerHTML = "<h1>" + kerdesek[i] + "</h1>";
+        mostanikerdes = i;
+
+        if (i == 9) {
+        kartya.style.backgroundImage = "url('Vágóúr.png')";
+        kartya.style.backgroundSize = "cover";
+        } else {
+        kartya.style.backgroundImage = "none";
+        }
+
         let valasz1 = Math.floor(Math.random() * valaszok.length)
         let valasz2 = Math.floor(Math.random() * valaszok.length)
         let valasz3 = Math.floor(Math.random() * valaszok.length)
+
+        while (valasz2 === valasz1 || valasz3 === valasz1 || valasz3 === valasz2) {
+        valasz2 = Math.floor(Math.random() * valaszok.length);
+        valasz3 = Math.floor(Math.random() * valaszok.length);
+        }
+
         document.getElementById("kartya1").innerHTML = "<p>" + valaszok[valasz1] + "</p>"
         document.getElementById("kartya2").innerHTML = "<p>" + valaszok[valasz2] + "</p>"
         document.getElementById("kartya3").innerHTML = "<p>" + valaszok[valasz3] + "</p>"
         mostanivalasz1 = valasz1;
         mostanivalasz2 = valasz2;
         mostanivalasz3 = valasz3;
-
         }
-        val_reset()
+        reset();
 
         function eredmeny(melyik){
             if (melyik == 1 && mostanikerdes == mostanivalasz1) pontsz += 15;
             else if (melyik == 2 && mostanikerdes == mostanivalasz2) pontsz += 15;
             else if (melyik == 3 && mostanikerdes == mostanivalasz3) pontsz += 15;
-            else pontsz -= 10
             document.getElementById("pontszam").innerHTML = "<p> PONTSZÁM: " + pontsz 
-            val_reset()
-            ker_reset()
+
+            reset()
         }
         
     </script>
